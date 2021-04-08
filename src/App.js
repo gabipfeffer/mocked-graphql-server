@@ -1,7 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
+import { gql, useQuery } from '@apollo/client';
 
-function App() {
+
+const App = () => {
+
+  const ALL_HORSES = gql`
+    query {
+      allHorses {
+        id
+        name
+        description
+      }
+    }
+  `
+
+  const { data } = useQuery(ALL_HORSES)
+  console.log('data:', data);
   return (
     <div className="App">
       <header className="App-header">
